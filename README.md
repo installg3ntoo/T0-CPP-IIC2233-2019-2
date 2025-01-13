@@ -47,7 +47,7 @@ cd build
 
 > [!IMPORTANT]
 > En Windows, hay problemas en la consola con UTF-8, para poder imprimir UTF-8 en consola hay que antes ejecutar:
-
-```
-chcp 65001
-```
+> 
+> ```bash
+> chcp 65001
+> ```
