@@ -46,9 +46,7 @@ cd build
 ```
 
 > [!IMPORTANT]
-
-> En Windows, hay problemas en la consola con UTF-8, para poder imprimir UTF-8 en consola
-> hay que antes ejecutar:
+> En Windows, hay problemas en la consola con UTF-8, para poder imprimir UTF-8 en consola hay que antes ejecutar:
 
 ```
 chcp 65001
