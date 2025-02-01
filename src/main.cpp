@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cstdlib>
 #include <limits> 
 #include "tablero.h"
 
@@ -22,6 +21,7 @@ int main() {
     cout <<"hola como estás " <<endl;
 
     print_tablero_con_utf8(tablero.tablero);
+    LimpiarConsola();
 
     std::cout << "\u001b[33mBienvenido A Lego Sweeper!\n\n"
               << u8"\u001b[34mPorfavor escoja una opción\n"
@@ -36,18 +36,26 @@ int main() {
             << "\u001b[35m3)Ver el ranking de puntajes" << endl
             << "\u001b[36;1m0)Salir\u001b[0m" << endl;
 
-        cin >> opcion;
+        //cin >> opcion;
 
-        if (cin.fail()) {
+        /*if (cin.fail()) {
             cin.clear(); // Clear the error state
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            opcion = -1;
+        }*/
+        try {
+            opcion = stoi(input("Ingrese una opción: "));
+        } catch (const invalid_argument& e) {
+            opcion = -1;
+        } catch (const out_of_range& e) {
             opcion = -1;
         }
 
         switch (opcion) {
             
             case 1:
-                cout << "Jugando..." << endl;
+                LimpiarConsola();
+                IniciarJuego();
                 break;
             case 2:
                 cout << "Instrucciones..." << endl;
@@ -59,12 +67,12 @@ int main() {
                 cout << "Saliendo..." << endl;
                 break;
             default:
-                #ifdef _WIN32
-                    system("cls");  // Windows
-                #else
-                    system("clear");  // Linux/Mac
-                #endif
-                cout << u8"\u001b[31mCarácter incorrecto, porfavor escriba el número de la opción deseada" << endl;
+                LimpiarConsola();
+                cout 
+                    << u8"\u001b[31mCarácter incorrecto, porfavor escriba el número de la opción deseada" 
+                    << "\u001b[0m"
+                    << endl;
+                
                 break;
         }
     }

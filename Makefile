@@ -19,7 +19,7 @@ SRCS = $(wildcard src/*.cpp) #main.cpp tablero.cpp
 OBJS = $(SRCS:src/%.cpp=$(BUILD_DIR)/%.o) #$(SRCS:.cpp=.o)
 
 # Create build directory
-EXEC = $(BUILD_DIR)/$(TARGET)
+EXEC = $(TARGET) #$(BUILD_DIR)/$(TARGET)
 
 # Determine the OS
 ifeq ($(OS),Windows_NT)
@@ -49,7 +49,7 @@ make_build_dir:
 
 # Determine the OS
 ifeq ($(OS),Windows_NT)
-    CLEAN_CMD = del /F /Q $(TARGET).exe $(OBJS)
+    CLEAN_CMD = del /F /Q $(subst /,\,$(TARGET).exe) $(subst /,\,$(OBJS))
 else
     CLEAN_CMD = rm -f $(TARGET) $(OBJS)
 endif

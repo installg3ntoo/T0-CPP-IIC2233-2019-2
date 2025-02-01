@@ -36,3 +36,7 @@
 
 # builds
 build/*
+
+#anything that is not .py in python folder
+python/*
+!python/*.py
